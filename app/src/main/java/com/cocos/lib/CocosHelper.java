@@ -25,9 +25,10 @@
  ****************************************************************************/
 package com.cocos.lib;
 
-import android.content.BroadcastReceiver;
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -57,9 +58,13 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Queue;
+import java.util.concurrent.locks.ReentrantLock;
 
 
 public class CocosHelper {

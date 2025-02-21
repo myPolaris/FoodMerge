@@ -27,13 +27,15 @@ package com.cocos.lib;
 
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.Surface;
+import android.view.SurfaceView;
 
 import com.food.carnival.merge.BuildConfig;
 
 public class CocosTouchHandler {
-    public final static String TAG = "CocosTouchHandler";
-    private boolean mStopHandleTouchAndKeyEvents = false;
-    private int mWindowId;
+    public final static String  TAG                          = "CocosTouchHandler";
+    private             boolean mStopHandleTouchAndKeyEvents = false;
+    private             int     mWindowId;
 
     public CocosTouchHandler(int windowId) {
         mWindowId = windowId;
@@ -55,7 +57,7 @@ public class CocosTouchHandler {
         switch (pMotionEvent.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_POINTER_DOWN:
                 if (mStopHandleTouchAndKeyEvents) {
-//                    Cocos2dxEditBox.complete();
+                    //                    Cocos2dxEditBox.complete();
                     return true;
                 }
 
@@ -73,7 +75,7 @@ public class CocosTouchHandler {
 
             case MotionEvent.ACTION_DOWN:
                 if (mStopHandleTouchAndKeyEvents) {
-//                    Cocos2dxEditBox.complete();
+                    //                    Cocos2dxEditBox.complete();
                     return true;
                 }
 
@@ -140,7 +142,7 @@ public class CocosTouchHandler {
         }
 
         if (BuildConfig.DEBUG) {
-//            CocosTouchHandler.dumpMotionEvent(pMotionEvent);
+            //            CocosTouchHandler.dumpMotionEvent(pMotionEvent);
         }
         return true;
     }

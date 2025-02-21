@@ -25,6 +25,7 @@
 package com.cocos.lib;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.SurfaceHolder;

@@ -26,11 +26,11 @@ THE SOFTWARE.
 
 package com.cocos.lib;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Handler;
 import android.os.Message;
+import android.app.Activity;
 
 import java.lang.ref.WeakReference;
 

@@ -1,27 +1,27 @@
 /****************************************************************************
-Copyright (c) 2010-2012 cocos2d-x.org
-Copyright (c) 2013-2016 Chukong Technologies Inc.
-Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
+ Copyright (c) 2010-2012 cocos2d-x.org
+ Copyright (c) 2013-2016 Chukong Technologies Inc.
+ Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
-http://www.cocos2d-x.org
+ http://www.cocos2d-x.org
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
  ****************************************************************************/
 package com.cocos.lib;
 
@@ -62,29 +62,29 @@ import com.food.carnival.merge.R;
 public class CocosEditBoxActivity extends Activity {
 
     // a color of dark green, was used for confirm button background
-    private static final int DARK_GREEN = Color.parseColor("#1fa014");
+    private static final int DARK_GREEN       = Color.parseColor("#1fa014");
     private static final int DARK_GREEN_PRESS = Color.parseColor("#008e26");
 
-    private static CocosEditBoxActivity sThis = null;
-    private Cocos2dxEditText mEditText = null;
-    private Button mButton = null;
-    private String mButtonTitle = null;
-    private boolean mConfirmHold = true;
-    private int mEditTextID = 1;
-    private int mButtonLayoutID = 2;
+    private static CocosEditBoxActivity sThis           = null;
+    private        Cocos2dxEditText     mEditText       = null;
+    private        Button               mButton         = null;
+    private        String               mButtonTitle    = null;
+    private        boolean              mConfirmHold    = true;
+    private        int                  mEditTextID     = 1;
+    private        int                  mButtonLayoutID = 2;
 
     /***************************************************************************************
      Inner class.
      **************************************************************************************/
     class Cocos2dxEditText extends EditText {
-        private final String TAG = "Cocos2dxEditBox";
-        private boolean mIsMultiLine = false;
-        private TextWatcher mTextWatcher = null;
-        private boolean keyboardVisible = false;
-        private int mScreenHeight;
-        private boolean mCheckKeyboardShowNormally = false;
+        private final String      TAG                        = "Cocos2dxEditBox";
+        private       boolean     mIsMultiLine               = false;
+        private       TextWatcher mTextWatcher               = null;
+        private       boolean     keyboardVisible            = false;
+        private       int         mScreenHeight;
+        private       boolean     mCheckKeyboardShowNormally = false;
 
-        public  Cocos2dxEditText(Activity context){
+        public Cocos2dxEditText(Activity context) {
             super(context);
             this.setTextColor(Color.BLACK);
             mScreenHeight = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).
@@ -116,7 +116,7 @@ public class CocosEditBoxActivity extends Activity {
 
         public void show(String defaultValue, int maxLength, boolean isMultiline, boolean confirmHold, String confirmType, String inputType) {
             mIsMultiLine = isMultiline;
-            this.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength) });
+            this.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
             this.setText(defaultValue);
             if (this.getText().length() >= defaultValue.length()) {
                 this.setSelection(defaultValue.length());
@@ -158,21 +158,20 @@ public class CocosEditBoxActivity extends Activity {
             } else if (confirmType.contentEquals("send")) {
                 this.setImeOptions(EditorInfo.IME_ACTION_SEND | EditorInfo.IME_FLAG_NO_EXTRACT_UI);
                 mButtonTitle = getResources().getString(R.string.send);
-            } else{
+            } else {
                 mButtonTitle = null;
                 Log.e(TAG, "unknown confirm type " + confirmType);
             }
         }
 
-        private void setInputType(final String inputType, boolean isMultiLine){
+        private void setInputType(final String inputType, boolean isMultiLine) {
             mCheckKeyboardShowNormally = false;
             if (inputType.contentEquals("text")) {
                 if (isMultiLine)
                     this.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
                 else
                     this.setInputType(InputType.TYPE_CLASS_TEXT);
-            }
-            else if (inputType.contentEquals("email"))
+            } else if (inputType.contentEquals("email"))
                 this.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
             else if (inputType.contentEquals("number"))
                 this.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
@@ -183,8 +182,7 @@ public class CocosEditBoxActivity extends Activity {
                     mCheckKeyboardShowNormally = true;
                 }
                 this.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-            }
-            else
+            } else
                 Log.e(TAG, "unknown input type " + inputType);
         }
 
@@ -193,7 +191,7 @@ public class CocosEditBoxActivity extends Activity {
             this.setOnEditorActionListener(new OnEditorActionListener() {
                 @Override
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                    if (! mIsMultiLine) {
+                    if (!mIsMultiLine) {
                         CocosEditBoxActivity.this.hide();
                     }
 
@@ -230,7 +228,7 @@ public class CocosEditBoxActivity extends Activity {
                     getWindowVisibleDisplayFrame(r);
                     int heightDiff = getRootView().getHeight() - (r.bottom - r.top);
                     // if more than a quarter of the screen, its probably a keyboard
-                    if (heightDiff > mScreenHeight/4) {
+                    if (heightDiff > mScreenHeight / 4) {
                         if (!keyboardVisible) {
                             keyboardVisible = true;
                         }
@@ -280,21 +278,21 @@ public class CocosEditBoxActivity extends Activity {
         if (null != intent) {
             extras = intent.getExtras();
         }
-        if(extras == null){
+        if (extras == null) {
             show("",
-                10,
-                false,
-                false,
-                "done",
-                "text"
-                );
+                    10,
+                    false,
+                    false,
+                    "done",
+                    "text"
+            );
         } else {
             show(extras.getString("defaultValue"),
-                extras.getInt("maxLength"),
-                extras.getBoolean("isMultiline"),
-                extras.getBoolean("confirmHold"),
-                extras.getString("confirmType"),
-                extras.getString("inputType"));
+                    extras.getInt("maxLength"),
+                    extras.getBoolean("isMultiline"),
+                    extras.getBoolean("confirmHold"),
+                    extras.getString("confirmType"),
+                    extras.getString("inputType"));
         }
     }
 
@@ -310,7 +308,7 @@ public class CocosEditBoxActivity extends Activity {
         myLayout.setBackgroundColor(Color.argb(255, 244, 244, 244));
 
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT);
+                ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         layout.addView(myLayout, layoutParams);
 
@@ -323,6 +321,7 @@ public class CocosEditBoxActivity extends Activity {
         int px = (int) (dp * scale + 0.5f);
         return px;
     }
+
     private void addEditText(RelativeLayout layout) {
         mEditText = new Cocos2dxEditText(this);
         mEditText.setVisibility(View.INVISIBLE);
@@ -331,7 +330,7 @@ public class CocosEditBoxActivity extends Activity {
         mEditText.setId(mEditTextID);
         int bottomPadding = dpToPixel(4);
         int leftPadding = dpToPixel(3);
-        mEditText.setPadding(leftPadding,bottomPadding,leftPadding,bottomPadding);
+        mEditText.setPadding(leftPadding, bottomPadding, leftPadding, bottomPadding);
 
         RelativeLayout.LayoutParams editParams = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -351,7 +350,7 @@ public class CocosEditBoxActivity extends Activity {
         mButton.setTextSize(16);
         mButton.setBackground(getRoundRectShape(18, DARK_GREEN, DARK_GREEN_PRESS));
         int paddingLeft = dpToPixel(5);
-        mButton.setPadding(paddingLeft,0,paddingLeft,0);
+        mButton.setPadding(paddingLeft, 0, paddingLeft, 0);
         layoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
         layoutParams.addRule(RelativeLayout.ALIGN_TOP, mEditTextID);
         layoutParams.addRule(RelativeLayout.ALIGN_BOTTOM, mEditTextID);
@@ -483,6 +482,8 @@ public class CocosEditBoxActivity extends Activity {
     }
 
     private static native void onKeyboardInputNative(String text);
+
     private static native void onKeyboardCompleteNative(String text);
+
     private static native void onKeyboardConfirmNative(String text);
 }

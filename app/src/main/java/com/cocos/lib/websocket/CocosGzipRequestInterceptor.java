@@ -8,7 +8,6 @@ import org.cocos2dx.okhttp3.Response;
 import org.cocos2dx.okio.BufferedSink;
 import org.cocos2dx.okio.GzipSink;
 import org.cocos2dx.okio.Okio;
-
 import java.io.IOException;
 
 public class CocosGzipRequestInterceptor implements Interceptor {

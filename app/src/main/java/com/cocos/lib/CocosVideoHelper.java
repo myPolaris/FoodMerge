@@ -25,7 +25,6 @@ THE SOFTWARE.
 
 package com.cocos.lib;
 
-import android.app.Activity;
 import android.graphics.Rect;
 import android.os.Handler;
 import android.os.Looper;
@@ -34,10 +33,14 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.app.Activity;
 
 import com.cocos.lib.CocosVideoView.OnVideoEventListener;
 
 import java.lang.ref.WeakReference;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
 
 public class CocosVideoHelper {
 

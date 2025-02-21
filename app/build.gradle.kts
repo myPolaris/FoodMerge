@@ -15,8 +15,8 @@ android {
         versionName = "1.0"
         resConfigs("en", "in", "pt-rBR")
         ndk {
-            abiFilters.add("armeabi-v7a")
             abiFilters.add("arm64-v8a")
+            abiFilters.add("armeabi-v7a")
         }
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -123,4 +123,5 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.lifecycle)
 }

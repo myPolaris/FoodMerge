@@ -9,6 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.food.carnival.merge"
+        //applicationId = "com.food.various.blast"
         minSdk = 28
         targetSdk = 34
         versionCode = 1
